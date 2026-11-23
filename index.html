@@ -1,1 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff0f5">
+<title>My apology for u ♡</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink: #f3a1bd;
+  --deep: #d9769c;
+  --light: #fff0f5;
+  --text: #795466;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 15% 15%, #ffe0eb, transparent 35%),
+    radial-gradient(circle at 85% 85%, #ffd9e7, transparent 35%),
+    linear-gradient(135deg, #fff9fa, #ffeaf1);
+}
+
+button {
+  font-family: inherit;
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating {
+  position: absolute;
+  bottom: -40px;
+  animation: floatUp linear forwards;
+  opacity: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(.6);
+    opacity: 0;
+  }
+  15% { opacity: .8; }
+  100% {
+    transform: translateY(-110vh) rotate(360deg) scale(1.3);
+    opacity: 0;
+  }
+}
+
+.sparkle {
+  position: fixed;
+  color: white;
+  pointer-events: none;
+  z-index: 1;
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .2; transform: scale(.7); }
+  to { opacity: 1; transform: scale(1.3); }
+}
+
+main {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 65px 20px;
+  text-align: center;
+}
+
+.page {
+  width: 100%;
+  max-width: 760px;
+  animation: appear 1.2s ease both;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.small-text {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #c77d99;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 8vw, 72px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #bd6689;
+}
+
+h1 span {
+  font-style: italic;
+  color: #ed91b0;
+}
+
+.subtitle {
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 18px auto;
+  max-width: 420px;
+  color: #9b7183;
+}
+
+/* TEDDY */
+
+.teddy {
+  font-size: 85px;
+  margin: 20px 0;
+  display: inline-block;
+  animation: teddy 3s ease-in-out infinite;
+  filter: drop-shadow(0 10px 10px #e8a1b455);
+}
+
+@keyframes teddy {
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+/* ENVELOPE */
+
+.envelope-area {
+  margin: 35px auto;
+  perspective: 900px;
+  width: 220px;
+  height: 155px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.envelope {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #f6abc4;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px #d989a544;
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fbd0df;
+  clip-path: polygon(0 0, 50% 55%, 100% 0);
+  z-index: 3;
+}
+
+.envelope::after {
+  content: "♡";
+  position: absolute;
+  top: 57px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 32px;
+  color: white;
+  z-index: 4;
+}
+
+.flap {
+  position: absolute;
+  inset: 0;
+  background: #f4a2bd;
+  clip-path: polygon(0 0, 100% 0, 50% 55%);
+  transform-origin: top;
+  transition: transform 1s ease;
+  z-index: 5;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.letter {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  height: 120px;
+  background: white;
+  border-radius: 6px;
+  transition: transform 1s ease;
+  z-index: 2;
+}
+
+.envelope.open .letter {
+  transform: translateY(-100px);
+}
+.tap-text {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #c17b98;
+  margin-top: 18px;
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: .4; }
+}
+
+/* APOLOGY LETTER */
+
+.message {
+  display: none;
+  width: 100%;
+  max-width: 550px;
+  margin: 40px auto 0;
+  padding: 35px 30px;
+  background: #ffffffbd;
+  border: 1px solid white;
+  border-radius: 22px;
+  box-shadow: 0 15px 45px #d88da522;
+  backdrop-filter: blur(15px);
+}
+
+.message.show {
+  display: block;
+  animation: appear 1s ease both;
+}
+
+.message h2 {
+  font-family: 'Playfair Display', serif;
+  color: #c66f91;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.message p {
+  font-size: 14px;
+  line-height: 2;
+  color: #866477;
+  margin-bottom: 15px;
+}
+
+/* PHOTO HEART GALLERY */
+
+.gallery {
+  margin: 100px auto 40px;
+}
+
+.gallery h2,
+.final h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 6vw, 43px);
+  color: #bd6689;
+  font-weight: 500;
+}
+
+.gallery p {
+  font-size: 13px;
+  color: #a57c8e;
+  margin: 12px 0 25px;
+}
+
+.photo-heart {
+  width: min(100%, 600px);
+  aspect-ratio: 1.08 / 1;
+  margin: 35px auto;
+  position: relative;
+}
+
+.photo {
+  position: absolute;
+  width: clamp(38px, 14%, 84px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 4px solid white;
+  border-radius: 13px;
+  box-shadow: 0 8px 25px #b66a8944;
+  transition: box-shadow .3s ease, filter .3s ease;
+  will-change: left, top, transform;
+}
+
+.photo:hover {
+  filter: brightness(1.08);
+  scale: 1.12;
+  z-index: 5;
+  box-shadow: 0 12px 30px #b66a8966;
+}
+
+/* FINAL QUESTION */
+
+.final {
+  margin: 110px auto 30px;
+}
+
+.final p {
+  color: #9b7183;
+  margin: 15px auto 25px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.buttons button {
+  padding: 14px 25px;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform .4s ease, box-shadow .4s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.yes {
+  background: linear-gradient(135deg, #f3a1bd, #df7da2);
+  color: white;
+  box-shadow: 0 8px 20px #df7da244;
+  transform-origin: center;
+  z-index: 2;
+}
+
+.later {
+  background: white;
+  color: #b87994;
+  border: 1px solid #f1c5d5 !important;
+}
+
+.yes:hover {
+  box-shadow: 0 12px 28px #df7da266;
+}
+
+.later:hover {
+  transform: translateY(-2px);
+}
+
+.result {
+  display: none;
+  margin: 30px auto;
+  padding: 22px;
+  max-width: 420px;
+  background: #ffffffbb;
+  border-radius: 18px;
+  color: #bd6689;
+  line-height: 1.8;
+}
+
+.result.show {
+  display: block;
+  animation: appear .7s ease both;
+}
+
+footer {
+  margin-top: 75px;
+  color: #c18da3;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+/* HEART EXPLOSION */
+
+.burst {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99;
+  animation: burst 1.8s ease-out forwards;
+}
+
+@keyframes burst {
+  from {
+    opacity: 1;
+    transform: translate(0, 0) scale(.5);
+  }
+  to {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) scale(1.8) rotate(35deg);
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+  main {
+    padding: 45px 18px;
+  }
+
+  .teddy {
+    font-size: 70px;
+  }
+  .message {
+    padding: 28px 20px;
+  }
+
+  .message h2 {
+    font-size: 27px;
+  }
+
+  .envelope-area {
+    width: 190px;
+    height: 135px;
+  }
+
+  .gallery {
+    margin-top: 80px;
+  }
+
+  .final {
+    margin-top: 85px;
+  }
+
+  .photo {
+    border-width: 3px;
+    border-radius: 9px;
+  }
+
+  .buttons {
+    gap: 14px;
+  }
+
+  .buttons button {
+    padding: 13px 18px;
+    font-size: 13px;
+  }
+
+  .yes {
+    max-width: 85vw;
+  }
+}
+
+@media (max-width: 360px) {
+  .photo-heart {
+    width: 100%;
+  }
+
+  .small-text {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<main>
+<div class="page">
+
+  <div class="small-text">My Apology for you ✧</div>
+
+  <h1>
+    မျက်မှန်လေး အတွက်<br>
+  
+  </h1>
+
+  <p class="subtitle">
+    Sometimes words are difficult to say,
+    so I made this to express them.
+  </p>
+
+  <div class="teddy">🧸</div>
+
+  <div class="envelope-area" onclick="openLetter()">
+    <div class="envelope" id="envelope">
+      <div class="letter"></div>
+      <div class="flap"></div>
+    </div>
+  </div>
+
+  <div class="tap-text" id="tapText">
+    စာအိတ်လေးကို ဖွင့်ကြည့်နော် ♡
+  </div>
+
+  <!-- APOLOGY LETTER -->
+
+  <div class="message" id="message">
+
+    <h2>I'm truly sorry ♡</h2>
+
+    <p>
+      မမလုပ်ခဲ့မိတဲ့ အမှားတွေအတွက် အများကြီးတောင်းပန်ပါတယ်
+    </p>
+
+    <p>
+     မျက်မှန်လေးကို စိတ်ပျက်စေခဲ့မိရင်လဲ အနူးအညွတ်တောင်းပန်ပါတယ်
+    </p>
+
+    <p>
+      မျက်မှန်လေး စိတ်ပျက်စေရအောင် ထပ်မလုပ်တော့ဘူးလို့ ကတိပေးပါတယ်။
+    </p>
+
+    <p>
+     အက်တာကြောင့်မလို့ ဒို့ကို အခွင့်အရေးတစ်ခုတော့ ပေးပါနော်
+    </p>
+
+    <p style="
+      font-family:'Playfair Display',serif;
+      font-size:21px;
+      color:#cf7b9b;
+    ">
+       Can u give me one last chance?♡
+    </p>
+
+  </div>
+
+  <!-- NINE PHOTO HEART -->
+
+  <section class="gallery">
+
+    <h2>ကမ္ဘာပေါ်မှာ မျက်မှန်တွေ အများကြီးရှိပေမယ့် ကိုယ်တပ်ချင်တာ ဒီတစ်လက်ထဲ ♡</h2>
+
+    <p>
+      ခိုးsaveထားတဲ့ ပုံလေးတွေ
+    </p>
+
+    <div class="photo-heart" id="photoHeart">
+
+      <img class="photo" src="images/1.png" alt="Memory 1">
+      <img class="photo" src="images/2.png" alt="Memory 2">
+      <img class="photo" src="images/3.png" alt="Memory 3">
+      <img class="photo" src="images/4.png" alt="Memory 4">
+      <img class="photo" src="images/5.png" alt="Memory 5">
+      <img class="photo" src="images/6.png" alt="Memory 6">
+      <img class="photo" src="images/7.png" alt="Memory 7">
+      <img class="photo" src="images/8.png" alt="Memory 8">
+      <img class="photo" src="images/9.png" alt="Memory 9">
+
+    </div>
+
+  </section>
+
+  <!-- FINAL QUESTION -->
+
+  <section class="final">
+
+    <h2>Can u give me one last chance? ♡</h2>
+
+    <p>
+      I hope we can understand each other better.
+    I love u Mg ♡
+    </p>
+
+    <div class="buttons">
+
+      <button
+        class="yes"
+        id="yesButton"
+        onclick="answerYes()"
+      >
+        Let's try ♡
+      </button>
+
+      <button
+        class="later"
+        onclick="answerLater()"
+      >
+        I need more time
+      </button>
+
+    </div>
+
+    <div class="result" id="result"></div>
+
+  </section>
+
+  <footer>
+    MADE WITH SINCERITY ♡
+  </footer>
+
+</div>
+</main>
+
+<script>
+
+/* FLOATING HEARTS */
+
+const particles = document.getElementById("particles");
+
+const symbols = ["♡", "♥", "✧", "✨", "୨୧"];
+
+function createFloating() {
+
+  const item = document.createElement("div");
+
+  item.className = "floating";
+
+  item.textContent =
+    symbols[Math.floor(Math.random() * symbols.length)];
+
+  item.style.left = Math.random() * 100 + "vw";
+
+  item.style.fontSize =
+    (12 + Math.random() * 22) + "px";
+    item.style.color = [
+    "#f3a4bf",
+    "#e9a6c1",
+    "#ffffff"
+  ][Math.floor(Math.random() * 3)];
+
+  item.style.animationDuration =
+    (7 + Math.random() * 8) + "s";
+
+  particles.appendChild(item);
+
+  setTimeout(() => item.remove(), 16000);
+
+}
+
+setInterval(createFloating, 500);
+
+
+/* SPARKLES */
+
+for (let i = 0; i < 18; i++) {
+
+  const sparkle = document.createElement("div");
+
+  sparkle.className = "sparkle";
+
+  sparkle.textContent = "✦";
+
+  sparkle.style.left = Math.random() * 100 + "vw";
+
+  sparkle.style.top = Math.random() * 100 + "vh";
+
+  sparkle.style.fontSize =
+    (8 + Math.random() * 12) + "px";
+
+  sparkle.style.animationDelay =
+    Math.random() * 3 + "s";
+
+  document.body.appendChild(sparkle);
+
+}
+
+
+/* OPEN ENVELOPE */
+
+let opened = false;
+
+function openLetter() {
+
+  if (opened) return;
+
+  opened = true;
+
+  document.getElementById("envelope")
+    .classList.add("open");
+
+  document.getElementById("tapText").textContent =
+    "A LITTLE MESSAGE FOR YOU ♡";
+
+  setTimeout(() => {
+
+    const message = document.getElementById("message");
+
+    message.classList.add("show");
+
+    message.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+  }, 900);
+
+}
+
+
+/* LOOP PHOTOS AROUND A HEART */
+
+const photoHeart = document.getElementById("photoHeart");
+const heartPhotos = Array.from(photoHeart.querySelectorAll(".photo"));
+const motionPreference = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+);
+let heartLoopFrame;
+const heartPathSamples = 720;
+let heartPath = [];
+let heartPathLength = 0;
+let heartLoopStart = null;
+let heartPathWidth = 0;
+let heartPathHeight = 0;
+
+function buildHeartPath() {
+
+  const width = photoHeart.clientWidth;
+  const height = photoHeart.clientHeight;
+  const points = [];
+  let minimumY = Infinity;
+  let maximumY = -Infinity;
+
+  for (let index = 0; index <= heartPathSamples; index++) {
+
+    const angle = index / heartPathSamples * Math.PI * 2;
+    const x = 16 * Math.pow(Math.sin(angle), 3);
+    const y = 13 * Math.cos(angle)
+      - 5 * Math.cos(2 * angle)
+      - 2 * Math.cos(3 * angle)
+      - Math.cos(4 * angle);
+
+    points.push({ x, y, distance: 0 });
+    minimumY = Math.min(minimumY, y);
+    maximumY = Math.max(maximumY, y);
+
+  }
+
+  const photoSize = heartPhotos[0]?.offsetWidth || 0;
+  const scale = Math.min(
+    (width - photoSize - 16) / 32,
+    (height - photoSize - 16) / (maximumY - minimumY)
+  );
+
+  points.forEach(point => {
+    point.x = width / 2 + point.x * scale;
+    point.y = height / 2 - (point.y - (maximumY + minimumY) / 2) * scale;
+  });
+
+  heartPathLength = 0;
+
+  for (let index = 1; index < points.length; index++) {
+    heartPathLength += Math.hypot(
+      points[index].x - points[index - 1].x,
+      points[index].y - points[index - 1].y
+    );
+    points[index].distance = heartPathLength;
+  }
+
+  heartPath = points;
+  heartPathWidth = width;
+  heartPathHeight = height;
+
+}
+
+function getHeartPoint(distance) {
+
+  const target = (distance % heartPathLength + heartPathLength)
+    % heartPathLength;
+  let low = 1;
+  let high = heartPath.length - 1;
+
+  while (low < high) {
+    const middle = Math.floor((low + high) / 2);
+
+    if (heartPath[middle].distance < target) {
+      low = middle + 1;
+    } else {
+      high = middle;
+    }
+  }
+
+  const start = heartPath[low - 1];
+  const end = heartPath[low];
+  const segmentLength = end.distance - start.distance || 1;
+  const progress = (target - start.distance) / segmentLength;
+
+  return {
+    x: start.x + (end.x - start.x) * progress,
+    y: start.y + (end.y - start.y) * progress
+  };
+
+}
+
+function animateHeartPhotos(time) {
+
+  if (
+    photoHeart.clientWidth !== heartPathWidth ||
+    photoHeart.clientHeight !== heartPathHeight
+  ) {
+    buildHeartPath();
+    heartLoopStart = time;
+  }
+
+  if (heartLoopStart === null) heartLoopStart = time;
+
+  const loopDuration = 24000;
+  const distancePerPhoto = heartPathLength / heartPhotos.length;
+  const travel = (time - heartLoopStart) / loopDuration * heartPathLength;
+
+  heartPhotos.forEach((photo, index) => {
+
+    const point = getHeartPoint(
+      travel + index * distancePerPhoto
+    );
+
+    photo.style.left = point.x + "px";
+    photo.style.top = point.y + "px";
+    photo.style.transform = "translate(-50%, -50%)";
+
+  });
+
+  if (!motionPreference.matches) {
+    heartLoopFrame = requestAnimationFrame(animateHeartPhotos);
+  }
+
+}
+
+function startHeartLoop() {
+
+  cancelAnimationFrame(heartLoopFrame);
+  buildHeartPath();
+  heartLoopStart = null;
+  animateHeartPhotos(performance.now());
+
+}
+
+startHeartLoop();
+const heartResizeObserver = new ResizeObserver(startHeartLoop);
+heartResizeObserver.observe(photoHeart);
+window.addEventListener("resize", startHeartLoop);
+motionPreference.addEventListener("change", startHeartLoop);
+
+
+/* YES BUTTON GROWTH */
+
+let yesScale = 1;
+
+const yesButton = document.getElementById("yesButton");
+
+function answerLater() {
+
+  yesScale = Math.min(yesScale + 0.12, 1.8);
+
+  yesButton.style.transform = `scale(${yesScale})`;
+
+  yesButton.style.transition =
+    "transform 0.4s ease, box-shadow 0.4s ease";
+
+  yesButton.style.boxShadow =
+    "0 10px 30px rgba(223, 125, 162, 0.4)";
+
+}
+
+
+/* YES RESPONSE */
+
+function answerYes() {
+
+  const result = document.getElementById("result");
+
+  result.innerHTML =
+    "အများကြီး ချစ်တယ်နော် မျက်မှန်လေး♡<br>" +
+    "I hope we can move forward with kindness and understanding. ✨";
+
+  result.classList.add("show");
+
+  heartExplosion();
+
+  result.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+}
+
+
+/* HEART EXPLOSION */
+
+function heartExplosion() {
+
+  for (let i = 0; i < 35; i++) {
+
+    const heart = document.createElement("div");
+
+    heart.className = "burst";
+
+    heart.textContent =
+      Math.random() > .5 ? "♡" : "♥";
+
+    heart.style.left = "50%";
+
+    heart.style.top = "50%";
+
+    heart.style.fontSize =
+      (15 + Math.random() * 25) + "px";
+
+    heart.style.color = [
+      "#f18eaf",
+      "#f7bdd0",
+      "#e7a3c0"
+    ][Math.floor(Math.random() * 3)];
+
+    heart.style.setProperty(
+      "--x",
+      (Math.random() - .5) * 500 + "px"
+    );
+
+    heart.style.setProperty(
+      "--y",
+      (Math.random() - .5) * 500 + "px"
+    );
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 2000);
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
